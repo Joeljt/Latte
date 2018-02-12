@@ -2,12 +2,12 @@ package com.ljt.latte.app;
 
 import android.content.Context;
 
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 /**
  * Author: ljt@yonyou.com
  * Date&Time: 2018/02/11, 17:32
- * For：
+ * For：要么为了继承设计，要么就禁止继承
  */
 
 public final class Latte {
@@ -17,8 +17,12 @@ public final class Latte {
         return Configutator.getInstance();
     }
 
-    private static WeakHashMap<String, Object> getConfigurations() {
+    private static HashMap<String, Object> getConfigurations() {
         return Configutator.getInstance().getLatteConfigs();
+    }
+
+    public static Context getApplication() {
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
     }
 
 }
