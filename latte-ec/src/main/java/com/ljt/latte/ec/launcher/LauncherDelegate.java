@@ -8,6 +8,8 @@ import android.view.View;
 import com.ljt.latte.delegates.LatteDelegate;
 import com.ljt.latte.ec.R;
 import com.ljt.latte.ec.R2;
+import com.ljt.latte.ec.sign.SignInDelegate;
+import com.ljt.latte.ec.sign.SignUpDelegate;
 import com.ljt.latte.util.storage.LattePreference;
 import com.ljt.latte.util.timer.BaseTimerTask;
 import com.ljt.latte.util.timer.ITimerListener;
@@ -35,7 +37,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener{
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClick() {
-        if(count < 0 && mTimer != null) {
+        if(mTimer != null) {
             mTimer.cancel();
             mTimer = null;
             checkIfShowScroll();
@@ -59,6 +61,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener{
             LattePreference.setAppFlag(LauncherScrollTag.IF_HAS_LACHUN_APP.name(), true);
         } else {
             // 检查是否登录了app
+            startWithPop(new SignInDelegate());
         }
     }
 
