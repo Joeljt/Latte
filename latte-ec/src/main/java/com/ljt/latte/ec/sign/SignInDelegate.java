@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * Created by ljt on 2018/3/29.
  */
 
-public class SignInDelegate extends LatteDelegate {
+public class SignInDelegate extends SignDelegate {
 
     @BindView(R2.id.sign_in_phone)
     TextInputEditText tvSignInPhone;
@@ -28,13 +28,14 @@ public class SignInDelegate extends LatteDelegate {
     @OnClick(R2.id.sign_in_submit)
     public void onClickSubmit(){
         if (checkForm()){
-            Toast.makeText(getContext(), "pass", Toast.LENGTH_LONG).show();
+            String json = "{\"data\":{\"name\":\"lijiateng\"}}";
+            SignHandler.onSignIn(json, mSignListener);
         }
     }
 
     @OnClick(R2.id.sign_in_go_sign_up)
     public void onClickGoSignUp(){
-        startWithPop(new SignUpDelegate());
+        start(new SignUpDelegate());
     }
 
     private boolean checkForm(){

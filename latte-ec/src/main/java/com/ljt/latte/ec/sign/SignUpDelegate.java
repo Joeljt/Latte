@@ -1,17 +1,19 @@
 package com.ljt.latte.ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ljt.latte.delegates.LatteDelegate;
 import com.ljt.latte.ec.R;
 import com.ljt.latte.ec.R2;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,7 +22,7 @@ import butterknife.OnClick;
  * Created by ljt on 2018/3/29.
  */
 
-public class SignUpDelegate extends LatteDelegate {
+public class SignUpDelegate extends SignDelegate {
 
     @BindView(R2.id.sign_up_name)
     TextInputEditText tvSignUpName;
@@ -36,7 +38,8 @@ public class SignUpDelegate extends LatteDelegate {
     @OnClick(R2.id.sign_up_submit)
     public void onClickSubmit(){
         if (checkForm()){
-            Toast.makeText(getContext(), "pass", Toast.LENGTH_LONG).show();
+            String json = "{\"data\":{\"name\":\"lijiateng\"}}";
+            SignHandler.onSignUp(json, mSignListener);
         }
     }
 

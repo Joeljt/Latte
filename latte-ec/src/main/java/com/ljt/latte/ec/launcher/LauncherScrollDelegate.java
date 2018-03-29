@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * For：
  */
 
-public class LauncherScrollDelegate extends LatteDelegate implements OnItemClickListener {
+public class LauncherScrollDelegate extends BaseLaunchDelegate implements OnItemClickListener {
 
     private ConvenientBanner<Integer> mConvenientBanner = null;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();
@@ -36,8 +36,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .setOnItemClickListener(this)
-                .setCanLoop(true);
-
+                .setCanLoop(false);
     }
 
     @Override
@@ -53,9 +52,10 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     @Override
     public void onItemClick(int position) {
-        // 标记首次进入
+        // 标记首次进入,之后判断登录状态
         if(position == INTEGERS.size()-1) {
-
+            LattePreference.setAppFlag(LauncherScrollTag.IF_HAS_LACHUN_APP.name(), true);
+            checkSignState();
         }
     }
 

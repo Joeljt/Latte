@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.ljt.latte.app.Latte;
+import com.ljt.latte.ec.database.DatabaseManager;
 import com.ljt.latte.ec.icon.FontEcModule;
 
 /**
@@ -22,5 +23,10 @@ public class ExampleApp extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .configure();
+
+        DatabaseManager.getInstance().init(this);
+
     }
+
+
 }

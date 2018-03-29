@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.ljt.latte.app.AccountManager;
 import com.ljt.latte.delegates.LatteDelegate;
 import com.ljt.latte.ec.R;
 import com.ljt.latte.ec.R2;
@@ -26,9 +27,9 @@ import butterknife.OnClick;
  * For：
  */
 
-public class LauncherDelegate extends LatteDelegate implements ITimerListener{
+public class LauncherDelegate extends BaseLaunchDelegate implements ITimerListener{
 
-    private int count = 5;
+    private int count = 3;
 
     private Timer mTimer = null;
 
@@ -58,10 +59,9 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener{
     private void checkIfShowScroll() {
         if (!LattePreference.getAppFlag(LauncherScrollTag.IF_HAS_LACHUN_APP.name())) {
             startWithPop(new LauncherScrollDelegate());
-            LattePreference.setAppFlag(LauncherScrollTag.IF_HAS_LACHUN_APP.name(), true);
         } else {
             // 检查是否登录了app
-            startWithPop(new SignInDelegate());
+            checkSignState();
         }
     }
 
