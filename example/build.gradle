@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.ljt.fastec"
         minSdkVersion 15
@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+    //testCompile 'junit:junit:4.12'
     compile project(':latte-ec')
-    annotationProcessor project(':latte-compiler')
+    //annotationProcessor project(':latte-compiler')
 }
