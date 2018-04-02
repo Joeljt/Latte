@@ -12,7 +12,7 @@ import com.ljt.latte.ec.sign.SignInDelegate;
 public class ExampleActivity extends ProxyActivity implements ILauncherListener,ISignListener{
 
     @Override
-    public LatteDelegate setRootDelegate() {
+    public LatteDelegate setRootDelegate()  {
         return new LauncherDelegate();
     }
 

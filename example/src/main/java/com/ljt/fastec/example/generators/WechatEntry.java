@@ -1,8 +1,11 @@
 package com.ljt.fastec.example.generators;
 
-//@EntryGenerator(
-//        packageName = "com.ljt.fastec",
-//        entryTemplate = WXEntryTemplate.class
-//)
-//public interface WechatEntry {
-//}
+import com.example.EntryGenerator;
+import com.ljt.latte.wechat.template.WXEntryTemplate;
+
+@EntryGenerator(
+        packageName = "com.ljt.fastec",
+        entryTemplate = WXEntryTemplate.class
+)
+public interface WechatEntry {
+}

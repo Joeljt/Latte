@@ -20,7 +20,7 @@ public final class LattePreference {
      * Context.getSharedPreferences(String name,int mode)生成name.xml
      */
     private static final SharedPreferences PREFERENCES =
-            PreferenceManager.getDefaultSharedPreferences(Latte.getApplication());
+            PreferenceManager.getDefaultSharedPreferences(Latte.getApplicationContext());
     private static final String APP_PREFERENCES_KEY = "profile";
 
     private static SharedPreferences getAppPreference() {

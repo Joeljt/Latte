@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.ContentFrameLayout;
 
 import com.ljt.latte.R;
+import com.ljt.latte.app.Latte;
 import com.ljt.latte.delegates.LatteDelegate;
 
 import me.yokeyword.fragmentation.SupportActivity;
@@ -23,6 +24,7 @@ public abstract class ProxyActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initContainer(savedInstanceState);
+        Latte.getConfigurator().withActivity(this);
     }
 
     private void initContainer(@Nullable Bundle savedInstanceState) {

@@ -1,5 +1,7 @@
 package com.ljt.latte.app;
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -17,7 +19,7 @@ import java.util.HashMap;
 
 public class Configutator {
 
-    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
     private static ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private Configutator() {
@@ -44,10 +46,27 @@ public class Configutator {
         return this;
     }
 
+    public final Configutator withAppId(String appId) {
+        LATTE_CONFIGS.put(ConfigType.WE_CHAT_APP_ID, appId);
+        return this;
+    }
+
+    public final Configutator withWeChatAppSerect(String appSerect) {
+        LATTE_CONFIGS.put(ConfigType.WE_CHAT_APP_SECRET, appSerect);
+        return this;
+    }
+
+    public final Configutator withActivity(Activity activity) {
+        LATTE_CONFIGS.put(ConfigType.ACTIVITY, activity);
+        return this;
+    }
     /*************************************** 配置相关 ***********************************************/
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) LATTE_CONFIGS.get(key);
+        final Object value = LATTE_CONFIGS.get(key);
+        if (value == null)
+            throw new NullPointerException(key.toString() + " is null");
+        return (T) value;
     }
 
     private void checkConfiguration() {
@@ -57,7 +76,7 @@ public class Configutator {
         }
     }
 
-    final HashMap<String, Object> getLatteConfigs() {
+    final HashMap<Object, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
     }
 
